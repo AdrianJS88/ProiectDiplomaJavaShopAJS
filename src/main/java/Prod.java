@@ -1,4 +1,4 @@
-public class User {
+public class Prod {
         private String username;
         private String password;
         private long id;
@@ -6,14 +6,18 @@ public class User {
         boolean isadmin;
 
 
-        public User(String username, String password) {
+        public Prod(String username, String password) {
             this.username = username;
             this.password = password;
 
 
+
         }
 
-        public boolean isIsadmin() {
+    public Prod(int producid, String producgroup, String producname, int producprice, int producquantity) {
+    }
+
+    public boolean isIsadmin() {
             return isadmin;
         }
 

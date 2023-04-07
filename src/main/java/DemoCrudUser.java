@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class DemoCrudUser {
 Scanner sc =new Scanner(System.in);
-    String createUser(User user, boolean isadmin){
+    String createUser(Prod user, boolean isadmin){
         String message=null;
         int val=0;
 
@@ -39,8 +39,8 @@ Scanner sc =new Scanner(System.in);
         return message;
     }
 
-    public List<User> readUsersByAdmin(){
-        List<User> listOfUsers = new ArrayList<>();
+    public List<Prod> readUsersByAdmin(){
+        List<Prod> listOfUsers = new ArrayList<>();
 
         //connect to DB
 
@@ -57,7 +57,7 @@ Scanner sc =new Scanner(System.in);
                 String password = resultSet.getString("password").trim();
                 boolean isadmin = resultSet.getBoolean("isadmin");
                 int id = resultSet.getInt("id");
-                User u = new User(user,password);
+                Prod u = new Prod(user,password);
                 u.setId(id);
                 u.setIsadmin(isadmin);
                 listOfUsers.add(u);
@@ -69,7 +69,7 @@ Scanner sc =new Scanner(System.in);
         return listOfUsers;
     }
 
-    String updateUser(User u) {
+    String updateUser(Prod u) {
         String message=null;
         int val = 0;
 
@@ -106,7 +106,7 @@ Scanner sc =new Scanner(System.in);
 
     }
 
-    String deleteUser(User u){
+    String deleteUser(Prod u){
         String message = null;
         int val = 0;
 
@@ -258,7 +258,7 @@ Scanner sc =new Scanner(System.in);
     }
 
 
-    long login (User user)  {
+    long login (Prod user)  {
 
         // -1 daca nu exista , si id-ul usaerului daca exista
         long id = -1;
@@ -289,7 +289,7 @@ Scanner sc =new Scanner(System.in);
         return id;
     }
 
-    boolean isAdmin (User user)  {
+    boolean isAdmin (Prod user)  {
 
         // -1 daca nu exista , si id-ul usaerului daca exista
 

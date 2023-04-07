@@ -8,7 +8,9 @@ import java.util.Scanner;
 public class ProgPrinc {
     static Scanner sc = new Scanner(System.in);
     static DemoCrudUser dbaccess = new DemoCrudUser();
-    static User user1 = new User("adi","1");
+
+    static Crud_Products dbaccessprod = new Crud_Products();
+    static Prod user1 = new Prod("adi","1");
 
     static Food food = new Food("food",1);
 
@@ -17,14 +19,14 @@ public class ProgPrinc {
         System.out.println("Login app food menu");
 
         long id = -1;
-        User u = null;
+        Prod u = null;
         while (true) {
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
             String username = sc.nextLine();
             System.out.println("Enter password:");
             String pwd = sc.nextLine();
-            u = new User(username, pwd);
+            u = new Prod(username, pwd);
             id = dbaccess.login(u);
             u.setId(id);
             if (id != -1)
@@ -87,28 +89,36 @@ public class ProgPrinc {
                 int ch2;
                 do {
                     System.out.println("******* Admin menu ******* ");
-                    System.out.println("1.INSERT  USER OR ADMIN");
-                    System.out.println("2.DISPLAY LIST OF USER");
-                    System.out.println("3.DELETE USER");
-                    System.out.println("4.UPDATE USER LIST");
-                    System.out.println("5.Exit");
+                    System.out.println("1.INSERT  USER OR ADMIN");//ok
+                    System.out.println("2.DISPLAY LIST OF USER");//ok
+                    System.out.println("3.DELETE USER");//ok
+                    System.out.println("4.UPDATE USER LIST");//ok
+                    System.out.println("5.INSERT PRODUCTS TO STORE LIST");
+                    System.out.println("6.READ PRODUCTS FROM STORE LIST");
+                    System.out.println("7.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
 
                     switch (ch2) {
                         case 1:
-                            dbaccess.createUser(user1,false);
+                            dbaccess.createUser(user1,false);//ok
 
                             break;
                         case 2:
-                            dbaccess.readUsersByAdmin();
+                            dbaccess.readUsersByAdmin();//ok
                             break;
                         case 3:
-                            dbaccess.deleteUser(user1);
+                            dbaccess.deleteUser(user1);//ok
 
                             break;
                         case 4:
-                            dbaccess.updateUser(user1);
+                            dbaccess.updateUser(user1);//ok
+                            break;
+                        case 5:
+                            dbaccessprod.createProduct();
+                            break;
+                        case 6:
+                            dbaccessprod.readProdByAdmin();
                             break;
                     }
 
