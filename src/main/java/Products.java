@@ -9,13 +9,12 @@ public class Products {
 
     @Override
     public String toString() {
-        return "Products{" +
-                "prodGroup='" + prodGroup + '\'' +
-                ", prodName='" + prodName + '\'' +
-                ", prodPrice=" + prodPrice +
-                ", prodQuantity=" + prodQuantity +
-                ", prodid=" + prodid +
-                '}';
+        return " Products : " +
+                " prodGroup=" + prodGroup  +
+                " prodName=" + prodName  +
+                " prodPrice=" + prodPrice +
+                " prodQuantity=" + prodQuantity +
+                " prodid=" + prodid + '\n';
     }
 
     public String getProdGroup() {

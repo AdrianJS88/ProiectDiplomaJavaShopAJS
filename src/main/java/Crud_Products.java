@@ -85,7 +85,7 @@ public class Crud_Products {
         return listOfProd;
     }
 //**************************************************************************************************************
-    String updateUser(Prod u) {
+    String updateProdByAdmin() {
         String message=null;
         int val = 0;
 
@@ -95,13 +95,20 @@ public class Crud_Products {
             Connection connection = DBconnect.ConexiuneDB();
 
             // run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("update users set password = ? ,username = ? where id = ? ");
-            System.out.println("new pass");
+            PreparedStatement preparedStatement = connection.prepareStatement("update products set prodgroup = ? ,prodname = ?, prodprice = ? ,prodquantity = ?  where prodid = ? ");
+            System.out.println("new product group :");
             preparedStatement.setString(1,sc.nextLine());
-            System.out.println("new username");
+            System.out.println("new product name ");
             preparedStatement.setString(2, sc.next());
-            System.out.println("old id");
+            System.out.println("new product price");
             preparedStatement.setInt(3, Integer.parseInt(sc.next()));
+            System.out.println("new product quantity");
+            preparedStatement.setInt(4, Integer.parseInt(sc.next()));
+            System.out.println("old product id");
+            preparedStatement.setInt(5, Integer.parseInt(sc.next()));
+
+
+
             val = preparedStatement.executeUpdate();
 
 
@@ -122,8 +129,8 @@ public class Crud_Products {
 
     }
 
-    String deleteUser(Prod u){
-        String message = null;
+    String deleteProductsByAdmin(){
+        String message = " ";
         int val = 0;
 
         //connect to DB
@@ -132,8 +139,8 @@ public class Crud_Products {
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from users where id = ?");
-
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from products where prodid = ?");
+            System.out.println("Enter product id to be deleted");
             preparedStatement.setInt(1, sc.nextInt());
 
             val = preparedStatement.executeUpdate();

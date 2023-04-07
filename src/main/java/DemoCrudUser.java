@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class DemoCrudUser {
 Scanner sc =new Scanner(System.in);
-    String createUser(Prod user, boolean isadmin){
+    String createUser(User user, boolean isadmin){
         String message=null;
         int val=0;
 
@@ -39,8 +39,8 @@ Scanner sc =new Scanner(System.in);
         return message;
     }
 
-    public List<Prod> readUsersByAdmin(){
-        List<Prod> listOfUsers = new ArrayList<>();
+    public List<User> readUsersByAdmin(){
+        List<User> listOfUsers = new ArrayList<>();
 
         //connect to DB
 
@@ -57,7 +57,7 @@ Scanner sc =new Scanner(System.in);
                 String password = resultSet.getString("password").trim();
                 boolean isadmin = resultSet.getBoolean("isadmin");
                 int id = resultSet.getInt("id");
-                Prod u = new Prod(user,password);
+                User u = new User(user,password);
                 u.setId(id);
                 u.setIsadmin(isadmin);
                 listOfUsers.add(u);
@@ -69,7 +69,7 @@ Scanner sc =new Scanner(System.in);
         return listOfUsers;
     }
 
-    String updateUser(Prod u) {
+    String updateUser(User u) {
         String message=null;
         int val = 0;
 
@@ -106,7 +106,7 @@ Scanner sc =new Scanner(System.in);
 
     }
 
-    String deleteUser(Prod u){
+    String deleteUser(User u){
         String message = null;
         int val = 0;
 
@@ -117,7 +117,7 @@ Scanner sc =new Scanner(System.in);
 
             //run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("delete from users where id = ?");
-
+            System.out.println("Enter id number to delete :");
             preparedStatement.setInt(1, sc.nextInt());
 
             val = preparedStatement.executeUpdate();
@@ -258,7 +258,7 @@ Scanner sc =new Scanner(System.in);
     }
 
 
-    long login (Prod user)  {
+    long login (User user)  {
 
         // -1 daca nu exista , si id-ul usaerului daca exista
         long id = -1;
@@ -289,7 +289,7 @@ Scanner sc =new Scanner(System.in);
         return id;
     }
 
-    boolean isAdmin (Prod user)  {
+    boolean isAdmin (User user)  {
 
         // -1 daca nu exista , si id-ul usaerului daca exista
 

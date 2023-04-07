@@ -10,7 +10,7 @@ public class ProgPrinc {
     static DemoCrudUser dbaccess = new DemoCrudUser();
 
     static Crud_Products dbaccessprod = new Crud_Products();
-    static Prod user1 = new Prod("adi","1");
+    static User user1 = new User("adi","1");
 
     static Food food = new Food("food",1);
 
@@ -19,14 +19,14 @@ public class ProgPrinc {
         System.out.println("Login app food menu");
 
         long id = -1;
-        Prod u = null;
+        User u = null;
         while (true) {
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
             String username = sc.nextLine();
             System.out.println("Enter password:");
             String pwd = sc.nextLine();
-            u = new Prod(username, pwd);
+            u = new User(username, pwd);
             id = dbaccess.login(u);
             u.setId(id);
             if (id != -1)
@@ -95,7 +95,9 @@ public class ProgPrinc {
                     System.out.println("4.UPDATE USER LIST");//ok
                     System.out.println("5.INSERT PRODUCTS TO STORE LIST");
                     System.out.println("6.READ PRODUCTS FROM STORE LIST");
-                    System.out.println("7.Exit");//ok
+                    System.out.println("7.UPDATE PRODUCTS FROM STORE LIST");
+                    System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
+                    System.out.println("9.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
 
@@ -120,11 +122,19 @@ public class ProgPrinc {
                         case 6:
                             dbaccessprod.readProdByAdmin();
                             break;
+                        case 7:
+                            dbaccessprod.updateProdByAdmin();
+                            break;
+                        case 8:
+                            dbaccessprod.deleteProductsByAdmin();
+                            break;
+
+
                     }
 
 
                 }
-                while (ch2 != 5);
+                while (ch2 != 9);
                 System.out.println("YOU EXIT THE APP");
                 break;
             }
