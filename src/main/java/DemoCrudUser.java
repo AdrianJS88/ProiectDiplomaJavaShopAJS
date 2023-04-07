@@ -155,7 +155,7 @@ Scanner sc =new Scanner(System.in);
         //  ("select * from users order by id asc");
             //run SQL
 
-            PreparedStatement preparedStatement = connection.prepareStatement("select  foodname, iduser from loggedfood,users where users.username=? and users.id=loggedfood.iduser");
+            PreparedStatement preparedStatement = connection.prepareStatement("select  prodname, iduser from loggedfood,users where users.username=? and users.id=loggedfood.iduser");
             System.out.println("enter  username to read the food for: ");
             String username = scanner.nextLine();
             preparedStatement.setString(1, username);
@@ -198,7 +198,7 @@ Scanner sc =new Scanner(System.in);
         try {
             Connection connection = DBconnect.ConexiuneDB();
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("update loggedfood set foodname = ? where iduser = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update loggedfood set prodname = ? where iduser = ?");
             preparedStatement.setString(1,sc.nextLine());
             preparedStatement.setInt(2,sc.nextInt());
 
@@ -234,7 +234,7 @@ Scanner sc =new Scanner(System.in);
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from loggedfood where foodname = ? and iduser=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from loggedfood where prodname = ? and iduser=?");
             preparedStatement.setString(1,sc.nextLine());
             preparedStatement.setInt(2,sc.nextInt());
 
@@ -341,11 +341,15 @@ Scanner sc =new Scanner(System.in);
             Connection conn = DriverManager.getConnection(URLDB, USERNAMEDB, PWDDB);
 
             // rulare sql
-            PreparedStatement pSt = conn.prepareStatement("insert into loggedfood (foodname,iduser) values (?,?);");
-            System.out.println("Enter foodname to add");
+            PreparedStatement pSt = conn.prepareStatement("insert into loggedfood (prodname,prodprice,prodquantity,id) values (?,?,?,?) ;");
+            System.out.println("Enter product name to add");
             pSt.setString(1,sc.nextLine());
-            System.out.println("Enter user  id to add");
+            System.out.println("Enter product price to add");
             pSt.setLong(2, sc.nextLong());
+            System.out.println("Enter product quantity to add");
+            pSt.setLong(3, sc.nextLong());
+            System.out.println("Enter id user product to add");
+            pSt.setInt(4, (int) sc.nextLong());
             val = pSt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

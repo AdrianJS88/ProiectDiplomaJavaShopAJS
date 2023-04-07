@@ -14,8 +14,6 @@ public class User {
 
         }
 
-    public User(int producid, String producgroup, String producname, int producprice, int producquantity) {
-    }
 
     public boolean isIsadmin() {
             return isadmin;
