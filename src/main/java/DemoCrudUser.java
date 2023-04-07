@@ -155,15 +155,17 @@ Scanner sc =new Scanner(System.in);
         //  ("select * from users order by id asc");
             //run SQL
 
-            PreparedStatement preparedStatement = connection.prepareStatement("select  username, prodname from loggedfood,users where users.username = ? and users.id=loggedfood.iduser");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from loggedfood where iduser = ?");
             System.out.println("enter  username to read the food for: ");
-            preparedStatement.setString(1, sc.next());
+            preparedStatement.setInt(1, Integer.parseInt(sc.next()));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
 
             while(resultSet.next()) {
                 String prodname = resultSet.getString("prodname").trim();
+                String prodprice = resultSet.getString("prodprice").trim();
+
                 int iduser = resultSet.getInt("id");
                 Food food = new Food(prodname,iduser);
 
