@@ -10,13 +10,12 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Food{" +
-                "foodname='" + productname +
-                ", iduser=" + iduser +
-                ", idproduct=" + id +
-                ", prodprice=" + prodprice +
-                ", prodquantity=" + prodquantity +  '\n' +
-                '}';
+        return "Cart : " +
+                "Product name = " + productname +
+                ", id user = " + iduser +
+                ", id product = " + id +
+                ", prod price = " + prodprice +
+                ", prod quantity = " + prodquantity +  '\n';
     }
 
     public int getProdprice() {
