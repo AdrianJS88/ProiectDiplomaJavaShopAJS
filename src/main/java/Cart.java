@@ -1,6 +1,7 @@
 public class Cart {
         private String productname;
 
+
         private int iduser;
         private int id;
         private int prodprice;

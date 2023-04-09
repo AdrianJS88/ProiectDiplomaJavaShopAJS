@@ -5,17 +5,10 @@ import java.util.Scanner;
 
 public class Crud_Cart {
     Scanner sc =new Scanner(System.in);
-    //*******************************CART CRUD***************************************************************************************
+
     boolean insertProdInCartForUserID(Cart cart, long id)  {
 
-        // COD CARE SCRIE IN DB
 
-
-
-        // daca are rezultate, citirea lor
-
-
-        // conectare la db cu incarcare driver
         final String URLDB = "jdbc:postgresql://localhost:5432/grupajava";
         final String USERNAMEDB ="postgres";
         final String PWDDB ="postgres";
@@ -38,7 +31,7 @@ public class Crud_Cart {
             ok=true;
         return ok;
     }
-//*******************************CART CRUD***************************************************************************************
+
 
 
 
@@ -83,7 +76,7 @@ public class Crud_Cart {
         if(listOfCart.isEmpty())
             System.out.println(" user  no registered ");
         else
-            System.out.println( " user selected has the following foods: ");
+            System.out.println( " user selected has the following Product: ");
         System.out.println(listOfCart);
         System.out.println("");
         return listOfCart;
@@ -112,15 +105,15 @@ public class Crud_Cart {
             if(m.contains("authentication failed "))
                 message=" connection problem. ";
             else if(m.contains("ERROR: value too long for type character"))
-                message="  food name  too long";
+                message="  Product name  too long";
             else if(m.contains(" not exist"))
-                message=" cannot update user  does not exist. ";
+                message=" cannot update product  does not exist. ";
             else message=" error";
 
         }
 
         System.out.println(message);
-        System.out.println(val + " food/s successfully updated ");
+        System.out.println(val + "Product /s successfully updated ");
         return message;
     }
 
@@ -143,21 +136,21 @@ public class Crud_Cart {
             val = preparedStatement.executeUpdate();
 
 
-            message=String.valueOf(val + " food/s succesfully deleted");
+            message=String.valueOf(val + " product succesfully deleted");
         } catch (SQLException e) {
             e.printStackTrace();
             String m = e.getMessage();
             if(m.contains(" authentication failed "))
                 message= " connection problem ";
             else if(m.contains("violates foreign key constraint"))
-                message= "cannot delete  food exist user registered for it";
+                message= "cannot delete  product exist product registered for it";
             else  message=" error";
         }
 
-        if(val<=0) System.out.println("The food  does not exist ");
+        if(val<=0) System.out.println("The product  does not exist ");
         if(message!=null) System.out.println(message);
         return message;
     }
-//*******************************CART CRUD***************************************************************************************
+
 
 }
