@@ -10,9 +10,14 @@ public class ProgPrinc {
     static DemoCrudUser dbaccess = new DemoCrudUser();
 
     static Crud_Products dbaccessprod = new Crud_Products();
+
+    static Crud_Cart dbaccessCartList = new Crud_Cart();
+
+
+
     static User user1 = new User("adi","1");
 
-    static Cart shopingCart = new Cart("food",1,1);
+    static Cart shopingCart = new Cart("product",1,1);
 
     public static void main(String[] args) throws IOException, SQLException {
 
@@ -59,18 +64,18 @@ public class ProgPrinc {
                     case 1:
 
 
-                        dbaccess.insertProdInCartForUserID(shopingCart,id);
+                        dbaccessCartList.insertProdInCartForUserID(shopingCart,id);
                         break;
                     case 2:
 
-                        dbaccess.readCartListOfAnUser();
+                        dbaccessCartList.readCartListOfAnUser();
 
                         break;
                     case 3:
-                        dbaccess.deleteProductFromCart(shopingCart);
+                        dbaccessCartList.deleteProductFromCart(shopingCart);
                         break;
                     case 4:
-                        dbaccess.updateProductFromCart(shopingCart);
+                        dbaccessCartList.updateProductFromCart(shopingCart);
                         break;
 
                 }
@@ -103,7 +108,7 @@ public class ProgPrinc {
 
                     switch (ch2) {
                         case 1:
-                            dbaccess.createUser(user1,false);//ok
+                            dbaccess.createUser(user1, false);//ok
 
                             break;
                         case 2:
