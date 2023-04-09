@@ -81,7 +81,7 @@ Scanner sc =new Scanner(System.in);
             // run SQL
              PreparedStatement preparedStatement = connection.prepareStatement("update users set password = ? ,username = ? where id = ? ");
             System.out.println("new pass");
-                         preparedStatement.setString(1,sc.nextLine());
+                         preparedStatement.setString(1,sc.next());
             System.out.println("new username");
                         preparedStatement.setString(2, sc.next());
             System.out.println("old id");
@@ -100,7 +100,7 @@ Scanner sc =new Scanner(System.in);
             else message="error ";
         }
 
-        System.out.println(message);
+
         System.out.println(val + " user/s successfully updated");
         return message;
 
@@ -140,12 +140,12 @@ Scanner sc =new Scanner(System.in);
     }
 
 
+//*******************************CART CRUD***************************************************************************************
 
 
 
-//food
-    public List<Food> readFoodsOfAnUser() {
-        List<Food> listOfFood = new ArrayList<>();
+    public List<Cart> readCartListOfAnUser() {
+        List<Cart> listOfCart = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         //connect to DB
@@ -155,7 +155,7 @@ Scanner sc =new Scanner(System.in);
         //  ("select * from users order by id asc");
             //run SQL
 
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from loggedfood where iduser = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from cart where iduser = ?");
 
             System.out.println("enter id of user : ");
             preparedStatement.setInt(1, Integer.parseInt(sc.next()));
@@ -164,14 +164,14 @@ Scanner sc =new Scanner(System.in);
 
 
             while(resultSet.next()) {
-                String prodname = resultSet.getString("prodname").trim();
+                String productname = resultSet.getString("prodname").trim();
                 Integer prodprice = resultSet.getInt("prodprice");
                 Integer prodquantity = resultSet.getInt("prodquantity");
                 int iduser = resultSet.getInt("iduser");
                 int id = resultSet.getInt("id");
-                Food food = new Food(prodname,iduser,id,prodprice,prodquantity);
+                Cart cart = new Cart(productname,iduser,id,prodprice,prodquantity);
 
-                listOfFood.add(food);
+                listOfCart.add(cart);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -182,17 +182,17 @@ Scanner sc =new Scanner(System.in);
             else message="error";
             System.out.println(message);
         }
-        if(listOfFood.isEmpty())
+        if(listOfCart.isEmpty())
             System.out.println(" user  no registered ");
         else
             System.out.println( " user selected has the following foods: ");
-        System.out.println(listOfFood);
+        System.out.println(listOfCart);
         System.out.println("");
-        return listOfFood;
+        return listOfCart;
     }
 
-//fooddddddddddddd
-    String updateFood(Food food) {
+
+    String updateProductFromCart(Cart cart) {
         String message= null;
         int val=0;
 
@@ -202,7 +202,7 @@ Scanner sc =new Scanner(System.in);
         try {
             Connection connection = DBconnect.ConexiuneDB();
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("update loggedfood set prodname = ? where iduser = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodname = ? where iduser = ?");
             preparedStatement.setString(1,sc.nextLine());
             preparedStatement.setInt(2,sc.nextInt());
 
@@ -227,7 +227,7 @@ Scanner sc =new Scanner(System.in);
     }
 
 //food
-    String deleteFood(Food food){
+    String deleteProductFromCart(Cart cart){
         String message = null;
         int val = 0;
 
@@ -238,7 +238,7 @@ Scanner sc =new Scanner(System.in);
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from loggedfood where prodname = ? and iduser=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from cart where prodname = ? and iduser=?");
             preparedStatement.setString(1,sc.nextLine());
             preparedStatement.setInt(2,sc.nextInt());
 
@@ -260,7 +260,7 @@ Scanner sc =new Scanner(System.in);
         if(message!=null) System.out.println(message);
         return message;
     }
-
+//*******************************CART CRUD***************************************************************************************
 
     long login (User user)  {
 
@@ -326,8 +326,8 @@ Scanner sc =new Scanner(System.in);
         return isAdmin;
     }
 
-//fodddd
-    boolean insertFoodForUserID (Food food, long id)  {
+    //*******************************CART CRUD***************************************************************************************
+    boolean insertProdInCartForUserID(Cart cart, long id)  {
 
         // COD CARE SCRIE IN DB
 
@@ -346,9 +346,9 @@ Scanner sc =new Scanner(System.in);
 
             // rulare sql
           //  PreparedStatement pst = conn.prepareStatement("INSERT INTO loggedfood ( prodname, prodprice, prodquantity,id,iduser) VALUES (?,?,?,?,?)");
-            PreparedStatement pst = conn.prepareStatement("Update loggedfood set prodname = products.prodname from products where products.prodid = ?");
+            PreparedStatement pst = conn.prepareStatement("Update cart set prodname = products.prodname , prodprice=products.prodprice ,prodquantity=products.prodquantity from products where products.prodid = ?");
             System.out.println("Enter product id  :");
-            pst.setInt(1, Integer.parseInt(sc.next()));
+            pst.setInt(1, sc.nextInt());
 
             val = pst.executeUpdate();
         } catch (SQLException e) {
@@ -359,7 +359,7 @@ Scanner sc =new Scanner(System.in);
             ok=true;
         return ok;
     }
-
+//*******************************CART CRUD***************************************************************************************
 
 }
 

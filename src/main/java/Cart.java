@@ -1,5 +1,5 @@
-public class Food {
-        private String foodname;
+public class Cart {
+        private String productname;
         private int iduser;
         private int id;
 
@@ -9,7 +9,7 @@ public class Food {
     @Override
     public String toString() {
         return "Food{" +
-                "foodname='" + foodname +
+                "foodname='" + productname +
                 ", iduser=" + iduser +
                 ", idproduct=" + id +
                 ", prodprice=" + prodprice +
@@ -33,16 +33,16 @@ public class Food {
         this.prodquantity = prodquantity;
     }
 
-    public Food(String foodname, int iduser, int id, int prodprice, int prodquantity) {
-        this.foodname = foodname;
+    public Cart(String foodname, int iduser, int id, int prodprice, int prodquantity) {
+        this.productname = foodname;
         this.iduser = iduser;
         this.id = id;
         this.prodprice = prodprice;
         this.prodquantity = prodquantity;
     }
 
-    public Food(String foodname, int iduser, int id) {
-            this.foodname = foodname;
+    public Cart(String foodname, int iduser, int id) {
+            this.productname = foodname;
             this.iduser=iduser;
             this.id = id;
         }
@@ -55,12 +55,12 @@ public class Food {
             this.iduser = iduser;
         }
 
-        public String getFoodname() {
-            return foodname;
+        public String getProductname() {
+            return productname;
         }
 
-        public void setFoodname(String foodname) {
-            this.foodname = foodname;
+        public void setProductname(String productname) {
+            this.productname = productname;
         }
 
         public int getId() {

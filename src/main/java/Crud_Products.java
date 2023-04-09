@@ -97,7 +97,7 @@ public class Crud_Products {
             // run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("update products set prodgroup = ? ,prodname = ?, prodprice = ? ,prodquantity = ?  where prodid = ? ");
             System.out.println("new product group :");
-            preparedStatement.setString(1,sc.nextLine());
+            preparedStatement.setString(1,sc.next());
             System.out.println("new product name ");
             preparedStatement.setString(2, sc.next());
             System.out.println("new product price");
@@ -123,7 +123,7 @@ public class Crud_Products {
             else message="error ";
         }
 
-        System.out.println(message);
+
         System.out.println(val + " user/s successfully updated");
         return message;
 
