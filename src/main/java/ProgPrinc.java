@@ -12,7 +12,7 @@ public class ProgPrinc {
     static Crud_Products dbaccessprod = new Crud_Products();
     static User user1 = new User("adi","1");
 
-    static Food food = new Food("food",1);
+    static Food food = new Food("food",1,1);
 
     public static void main(String[] args) throws IOException, SQLException {
 

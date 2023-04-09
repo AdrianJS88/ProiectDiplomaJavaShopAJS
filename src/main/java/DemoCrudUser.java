@@ -156,7 +156,8 @@ Scanner sc =new Scanner(System.in);
             //run SQL
 
             PreparedStatement preparedStatement = connection.prepareStatement("select * from loggedfood where iduser = ?");
-            System.out.println("enter  username to read the food for: ");
+
+            System.out.println("enter id of user : ");
             preparedStatement.setInt(1, Integer.parseInt(sc.next()));
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -164,10 +165,11 @@ Scanner sc =new Scanner(System.in);
 
             while(resultSet.next()) {
                 String prodname = resultSet.getString("prodname").trim();
-                String prodprice = resultSet.getString("prodprice").trim();
-
-                int iduser = resultSet.getInt("id");
-                Food food = new Food(prodname,iduser);
+                Integer prodprice = resultSet.getInt("prodprice");
+                Integer prodquantity = resultSet.getInt("prodquantity");
+                int iduser = resultSet.getInt("iduser");
+                int id = resultSet.getInt("id");
+                Food food = new Food(prodname,iduser,id,prodprice,prodquantity);
 
                 listOfFood.add(food);
             }
@@ -343,18 +345,11 @@ Scanner sc =new Scanner(System.in);
             Connection conn = DriverManager.getConnection(URLDB, USERNAMEDB, PWDDB);
 
             // rulare sql
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO loggedfood ( prodname, prodprice, prodquantity,id,iduser) VALUES (?,?,?,?,?)");
+          //  PreparedStatement pst = conn.prepareStatement("INSERT INTO loggedfood ( prodname, prodprice, prodquantity,id,iduser) VALUES (?,?,?,?,?)");
+            PreparedStatement pst = conn.prepareStatement("Update loggedfood set prodname = products.prodname from products where products.prodid = ?");
+            System.out.println("Enter product id  :");
+            pst.setInt(1, Integer.parseInt(sc.next()));
 
-            System.out.println("Enter product name :");
-            pst.setString(1, sc.next());
-            System.out.println("Enter product price :");
-            pst.setInt(2, Integer.parseInt(sc.next()));
-            System.out.println("Enter product quantity :");
-            pst.setInt(3, Integer.parseInt(sc.next()));
-            System.out.println("Enter product id :");
-            pst.setInt(4, Integer.parseInt(sc.next()));
-            System.out.println("Enter product iduser :");
-            pst.setInt(5, Integer.parseInt(sc.next()));
             val = pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
