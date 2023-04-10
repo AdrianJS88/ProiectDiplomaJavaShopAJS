@@ -93,8 +93,9 @@ public class Crud_Cart {
             Connection connection = DBconnect.ConexiuneDB();
             //run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodname = ? where iduser = ?");
-
+            System.out.println("Enter new  product name to update ");
             preparedStatement.setString(1,sc.nextLine());
+
             preparedStatement.setInt(2,sc.nextInt());
 
             val = preparedStatement.executeUpdate();
