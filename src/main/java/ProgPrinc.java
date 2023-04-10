@@ -21,6 +21,9 @@ public class ProgPrinc {
 
     public static void main(String[] args) throws IOException, SQLException {
 
+
+        System.out.println("Register  to Shop");
+        Register.customerRegister();
         System.out.println("Login Shop App menu");
 
         long id = -1;

@@ -15,7 +15,7 @@ Scanner sc =new Scanner(System.in);
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO USERS (username, password, isadmin) VALUES (?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users (username, password, isadmin) VALUES (?,?,?)");
             System.out.println("Enter user name :");
             preparedStatement.setString(1,sc.nextLine());
             System.out.println("Enter user password :");
