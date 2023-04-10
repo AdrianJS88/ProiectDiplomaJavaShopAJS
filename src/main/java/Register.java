@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Register {
     static Scanner sc =new Scanner(System.in);
     static String customerRegister(){
+        System.out.println("Customer register menu");
         String message=null;
         int val=0;
 
@@ -26,7 +27,7 @@ public class Register {
         } catch (SQLException e) {
             e.printStackTrace();
             String m = e.getMessage();
-            if(m.contains("authentication failed for"))
+            if(m.contains("authentication failed "))
                 message="connection problem";
             else if(m.contains("ERROR: value too long"))
                 message=" username or password too long";

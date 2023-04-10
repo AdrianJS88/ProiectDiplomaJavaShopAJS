@@ -22,13 +22,41 @@ public class ProgPrinc {
     public static void main(String[] args) throws IOException, SQLException {
 
 
-        System.out.println("Register  to Shop");
-        Register.customerRegister();
-        System.out.println("Login Shop App menu");
+        System.out.println("************Login Shop App menu**********");
+        int ch;
+        do {
 
+            System.out.println("1.register menu");
+            System.out.println("2.login shop menu");
+            System.out.println("3.exit app");
+
+            System.out.print("Enter Your Choice : ");
+            ch = sc.nextInt();
+
+            switch (ch) {
+                case 1:
+                    Register.customerRegister();
+                    break;
+                case 2:
+                    shopSystem();
+                    break;
+                case 3:
+
+                    break;
+
+            }
+        }while (ch != 3);
+        System.out.println("YOU EXIT THE APP");
+
+    }
+
+
+    private static void shopSystem() {
         long id = -1;
         User u = null;
+
         while (true) {
+            System.out.println("Login Shop Menu!!!!!!!");
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
             String username = sc.nextLine();
@@ -107,7 +135,7 @@ public class ProgPrinc {
                     System.out.println("6.READ PRODUCTS FROM STORE LIST");
                     System.out.println("7.UPDATE PRODUCTS FROM STORE LIST");
                     System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
-                    System.out.println("9.Return to login menu");
+                    System.out.println("9.Register  menu");
                     System.out.println("10.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
@@ -140,15 +168,8 @@ public class ProgPrinc {
                             dbaccessprod.deleteProductsByAdmin();
                             break;
                         case 9:
-                            System.out.println("Enter username:");
-                            Scanner sc = new Scanner(System.in);
-                            String username = sc.nextLine();
-                            System.out.println("Enter password:");
-                            String pwd = sc.nextLine();
-                            u = new User(username, pwd);
-                            id = dbaccess.login(u);
-                            u.setId(id);
-                            if (id == 0)
+                            System.out.println("*********Shop register menu*************");
+                            Register.customerRegister();
                                 break;
 
 
