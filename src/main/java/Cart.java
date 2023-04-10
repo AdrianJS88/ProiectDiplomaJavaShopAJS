@@ -1,22 +1,36 @@
 public class Cart {
-        private String productname;
+    private String prodgroup,prodname;
+    private int prodprice,prodid;
+    private int prodquantity,iduser;
 
-
-        private int iduser;
-        private int id;
-        private int prodprice;
-        private int prodquantity;
-
-
+    public Cart(int prodid, String prodgroup, String prodname, int prodprice, int prodquantity, int iduser) {
+    }
 
     @Override
     public String toString() {
-        return "Cart : " +
-                "Product name = " + productname +
-                ", id user = " + iduser +
-                ", id product = " + id +
-                ", prod price = " + prodprice +
-                ", prod quantity = " + prodquantity +  '\n';
+        return "Cart{" +
+                "prodgroup='" + prodgroup + '\'' +
+                ", prodname='" + prodname + '\'' +
+                ", prodprice=" + prodprice +
+                ", prodid=" + prodid +
+                ", prodquantity=" + prodquantity +
+                ", iduser=" + iduser +'\n';
+    }
+
+    public String getProdgroup() {
+        return prodgroup;
+    }
+
+    public void setProdgroup(String prodgroup) {
+        this.prodgroup = prodgroup;
+    }
+
+    public String getProdname() {
+        return prodname;
+    }
+
+    public void setProdname(String prodname) {
+        this.prodname = prodname;
     }
 
     public int getProdprice() {
@@ -27,6 +41,14 @@ public class Cart {
         this.prodprice = prodprice;
     }
 
+    public int getProdid() {
+        return prodid;
+    }
+
+    public void setProdid(int prodid) {
+        this.prodid = prodid;
+    }
+
     public int getProdquantity() {
         return prodquantity;
     }
@@ -35,42 +57,20 @@ public class Cart {
         this.prodquantity = prodquantity;
     }
 
-    public Cart(String foodname, int iduser, int id, int prodprice, int prodquantity) {
-        this.productname = foodname;
-        this.iduser = iduser;
-        this.id = id;
-        this.prodprice = prodprice;
-        this.prodquantity = prodquantity;
+    public int getIduser() {
+        return iduser;
     }
 
-    public Cart(String foodname, int iduser, int id) {
-            this.productname = foodname;
-            this.iduser=iduser;
-            this.id = id;
-        }
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
+    }
 
-        public int getIduser() {
-            return iduser;
-        }
-
-        public void setIduser(int iduser) {
-            this.iduser = iduser;
-        }
-
-        public String getProductname() {
-            return productname;
-        }
-
-        public void setProductname(String productname) {
-            this.productname = productname;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
+    public Cart(String prodgroup, String prodname, int prodprice, int prodid, int prodquantity, int iduser) {
+        this.prodgroup = prodgroup;
+        this.prodname = prodname;
+        this.prodprice = prodprice;
+        this.prodid = prodid;
+        this.prodquantity = prodquantity;
+        this.iduser = iduser;
+    }
 }

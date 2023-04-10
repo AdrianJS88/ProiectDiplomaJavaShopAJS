@@ -17,11 +17,11 @@ public class ProgPrinc {
 
     static User user1 = new User("adi","1");
 
-    static Cart shopingCart = new Cart("product",1,1);
+    static Cart shopingCart = new Cart("","",1,2,3,5);
 
     public static void main(String[] args) throws IOException, SQLException {
 
-        System.out.println("Login app food menu");
+        System.out.println("Login Shop App menu");
 
         long id = -1;
         User u = null;
@@ -39,7 +39,7 @@ public class ProgPrinc {
 
         }
 
-        // ura sunt logat , deci pot baga mancare
+
         while (true) {
 
             boolean isAdmin = dbaccess.isAdmin(u);
@@ -52,19 +52,21 @@ public class ProgPrinc {
 
             int ch;
             do {
-                System.out.println("1.INSERT  FOOD FOR CURRENT USER");
-                System.out.println("2.DISPLAY LIST OF FOOD FOR CURRENT ID USER");
-                System.out.println("3.DELETE FOOD FROM LIST");
-                System.out.println("4.UPDATE FOOD FROM LIST");
+                System.out.println("0.READ AVAILABLE  PRODUCTS IN STORE  ");
+                System.out.println("1.INSERT PRODUCTS FOR CURRENT USER");
+                System.out.println("2.DISPLAY LIST OF PRODUCTS FOR CURRENT ID USER");
+                System.out.println("3.DELETE PRODUCTS FROM LIST");
+                System.out.println("4.UPDATE PRODUCTS FROM LIST");
                 System.out.println("5.Exit");
                 System.out.print("Enter Your Choice : ");
                 ch = s.nextInt();
 
                 switch (ch) {
+                    case 0:
+                        dbaccessprod.readProdByAdmin();
+                        break;
                     case 1:
-
-
-                        dbaccessCartList.insertProdInCartForUserID(shopingCart,id);
+                        dbaccessCartList.insertProdInCartForUserID();
                         break;
                     case 2:
 
@@ -102,7 +104,8 @@ public class ProgPrinc {
                     System.out.println("6.READ PRODUCTS FROM STORE LIST");
                     System.out.println("7.UPDATE PRODUCTS FROM STORE LIST");
                     System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
-                    System.out.println("9.Exit");//ok
+                    System.out.println("9.Return to login menu");
+                    System.out.println("10.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
 
@@ -133,16 +136,29 @@ public class ProgPrinc {
                         case 8:
                             dbaccessprod.deleteProductsByAdmin();
                             break;
+                        case 9:
+                            System.out.println("Enter username:");
+                            Scanner sc = new Scanner(System.in);
+                            String username = sc.nextLine();
+                            System.out.println("Enter password:");
+                            String pwd = sc.nextLine();
+                            u = new User(username, pwd);
+                            id = dbaccess.login(u);
+                            u.setId(id);
+                            if (id == 0)
+                                break;
 
 
                     }
 
 
                 }
-                while (ch2 != 9);
+
+                while (ch2 != 10);
                 System.out.println("YOU EXIT THE APP");
                 break;
             }
+            break;
         }
     }
 }
