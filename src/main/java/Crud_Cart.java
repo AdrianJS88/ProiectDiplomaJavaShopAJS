@@ -1,10 +1,12 @@
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Crud_Cart {
-    Scanner sc = new Scanner(System.in);
+
+    static Scanner sc = new Scanner(System.in);
 
     public String insertProdInCartForUserID() {
         String message = null;
@@ -18,7 +20,7 @@ public class Crud_Cart {
             //run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cart (prodid, prodgroup, prodname, prodprice, prodquantity, iduser)  SELECT prodid,prodgroup,prodname,prodprice,prodquantity,iduser FROM products WHERE prodid = ?");
             System.out.println("Enter product id name to add :");
-            preparedStatement.setInt(1, Integer.parseInt(sc.next()));
+            preparedStatement.setInt(1, sc.nextInt());
 
 
             val = preparedStatement.executeUpdate();
@@ -87,15 +89,15 @@ public class Crud_Cart {
         int val=0;
 
         //connect to DB
-
+        System.out.println("Enter product id to set the new qunatity:  ");
+        Integer str = sc.nextInt();
 
         try {
             Connection connection = DBconnect.ConexiuneDB();
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodname = ? where iduser = ?");
-            System.out.println("Enter new  product name to update ");
-            preparedStatement.setString(1,sc.nextLine());
-            System.out.println("Enter id to be update");
+            PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodquantity where iduser = "+str+"");
+
+            System.out.println("Enter new quanity to be update");
             preparedStatement.setInt(2,sc.nextInt());
 
             val = preparedStatement.executeUpdate();
@@ -119,20 +121,21 @@ public class Crud_Cart {
     }
 
     //food
-    String deleteProductFromCart(Cart cart){
+    String deleteProductFromCart(){
         String message = null;
         int val = 0;
 
         //connect to DB
-
+        System.out.println("Enter product id to be deleted from you cartlist:  ");
+        Integer str = sc.nextInt();
 
         try {
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from cart where prodid = ? ");
-            System.out.println("Enter prod id to delete  ");
-            preparedStatement.setString(1,sc.nextLine());
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from cart where prodid = " +str+ " ");
+
+
 
 
 
@@ -154,6 +157,7 @@ public class Crud_Cart {
         if(message!=null) System.out.println(message);
         return message;
     }
+
 
 
 }

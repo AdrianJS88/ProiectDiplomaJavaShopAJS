@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Register {
     static Scanner sc =new Scanner(System.in);
     static String customerRegister(){
+
+
         System.out.println("Customer register menu");
         String message=null;
         int val=0;

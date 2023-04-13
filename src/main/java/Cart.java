@@ -6,15 +6,19 @@ public class Cart {
     public Cart(int prodid, String prodgroup, String prodname, int prodprice, int prodquantity, int iduser) {
     }
 
+    public Cart() {
+
+    }
+
     @Override
     public String toString() {
-        return "Cart{" +
-                "prodgroup='" + prodgroup + '\'' +
-                ", prodname='" + prodname + '\'' +
-                ", prodprice=" + prodprice +
-                ", prodid=" + prodid +
-                ", prodquantity=" + prodquantity +
-                ", iduser=" + iduser +'\n';
+        return " Shop Cart : " +
+                "Product group:'" + prodgroup + '\'' +
+                ", Product name:'" + prodname + '\'' +
+                ", Product price:" + prodprice +
+                ", Product id:" + prodid +
+                ", Product quantity:" + prodquantity +
+                ", Id User : " + iduser +'\n';
     }
 
     public String getProdgroup() {
@@ -73,4 +77,12 @@ public class Cart {
         this.prodquantity = prodquantity;
         this.iduser = iduser;
     }
+
+    public void removeFromCart(int rem) {
+    }
+
+    public void addToCart(int pId, String pName, String pType, int qPur, float pPrice) {
+    }
+    //cart version 2
+
 }

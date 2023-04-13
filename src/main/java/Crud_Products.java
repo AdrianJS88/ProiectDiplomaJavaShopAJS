@@ -18,15 +18,15 @@ public class Crud_Products {
             //run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO products (prodid, prodgroup, prodname, prodprice, prodquantity) VALUES (?,?,?,?,?)");
             System.out.println("Enter product id name :");
-            preparedStatement.setInt(1, Integer.parseInt(sc.next()));
+            preparedStatement.setInt(1, sc.nextInt());
             System.out.println("Enter product group :");
             preparedStatement.setString(2, sc.next());
             System.out.println("Enter product name :");
             preparedStatement.setString(3, sc.next());
             System.out.println("Enter product price :");
-            preparedStatement.setInt(4, Integer.parseInt(sc.next()));
+            preparedStatement.setInt(4,sc.nextInt());
             System.out.println("Enter product quantity :");
-            preparedStatement.setInt(5, Integer.parseInt(sc.next()));
+            preparedStatement.setInt(5, sc.nextInt());
 
             val=preparedStatement.executeUpdate();
         } catch (SQLException e) {

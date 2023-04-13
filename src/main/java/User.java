@@ -49,10 +49,10 @@ public class User {
 
         @Override
         public String toString() {
-            return  "username= " + username + "," + " " +
-                    "password= " + password + "," + " " +
-                    "id= " + id + "," + " " +
-                    "isadmin= " + isadmin + ";" + '\n';
+            return  "User name : " + username + "," + " " +
+                    "Password : " + password + "," + " " +
+                    "Id : " + id + "," + " " +
+                    "is admin : " + isadmin + ";" + '\n';
         }
     }
 

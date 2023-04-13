@@ -1,13 +1,17 @@
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 
 
-public class ProgPrinc {
+public class Main {
     static Scanner sc = new Scanner(System.in);
     static DemoCrudUser dbaccess = new DemoCrudUser();
+
+    static float total = 0;
 
     static Crud_Products dbaccessprod = new Crud_Products();
 
@@ -19,16 +23,16 @@ public class ProgPrinc {
 
     static Cart shopingCart = new Cart("","",1,2,3,5);
 
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException {
 
 
         System.out.println("************Login Shop App menu**********");
         int ch;
         do {
 
-            System.out.println("1.register menu");
-            System.out.println("2.login shop menu");
-            System.out.println("3.exit app");
+            System.out.println("1.Register menu");
+            System.out.println("2.Login shop menu");
+            System.out.println("3.Exit app");
 
             System.out.print("Enter Your Choice : ");
             ch = sc.nextInt();
@@ -40,23 +44,18 @@ public class ProgPrinc {
                 case 2:
                     shopSystem();
                     break;
-                case 3:
-
-                    break;
 
             }
         }while (ch != 3);
         System.out.println("YOU EXIT THE APP");
 
     }
-
-
-    private static void shopSystem() {
+    private static void shopSystem() throws IOException {
         long id = -1;
         User u = null;
 
         while (true) {
-            System.out.println("Login Shop Menu!!!!!!!");
+            System.out.println("LOGIN SHOP MENU!!!!!!!");
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
             String username = sc.nextLine();
@@ -67,7 +66,6 @@ public class ProgPrinc {
             u.setId(id);
             if (id != -1)
                 break;
-
         }
 
 
@@ -87,7 +85,8 @@ public class ProgPrinc {
                 System.out.println("1.INSERT PRODUCTS FOR CURRENT USER");
                 System.out.println("2.DISPLAY LIST OF PRODUCTS FOR CURRENT ID USER");
                 System.out.println("3.DELETE PRODUCTS FROM LIST");
-                System.out.println("4.UPDATE PRODUCTS FROM LIST");
+               System.out.println("4.Generate bill");
+
                 System.out.println("5.Exit");
                 System.out.print("Enter Your Choice : ");
                 ch = s.nextInt();
@@ -105,10 +104,12 @@ public class ProgPrinc {
 
                         break;
                     case 3:
-                        dbaccessCartList.deleteProductFromCart(shopingCart);
+                        dbaccessCartList.deleteProductFromCart();
                         break;
                     case 4:
-                        dbaccessCartList.updateProductFromCart(shopingCart);
+                  dbaccessCartList.updateProductFromCart(shopingCart);
+
+
                         break;
 
                 }
@@ -116,8 +117,6 @@ public class ProgPrinc {
             System.out.println("YOU EXIT THE APP");
             break;
         }
-
-
             //is admin
             while (true) {
                 //admin user menu.
@@ -169,7 +168,7 @@ public class ProgPrinc {
                             break;
                         case 9:
                             System.out.println("*********Shop register menu*************");
-                            Register.customerRegister();
+
                                 break;
 
 
@@ -185,6 +184,7 @@ public class ProgPrinc {
             break;
         }
     }
+
 }
 
 
