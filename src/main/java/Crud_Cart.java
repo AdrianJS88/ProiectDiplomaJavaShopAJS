@@ -89,7 +89,7 @@ public class Crud_Cart {
         int val=0;
 
         //connect to DB
-        System.out.println("Enter product id to set the new qunatity:  ");
+        System.out.println("Enter product id to set the new quantity:  ");
         Integer str = sc.nextInt();
 
         try {

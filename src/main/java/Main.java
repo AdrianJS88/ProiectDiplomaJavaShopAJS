@@ -23,7 +23,7 @@ public class Main {
 
     static Cart shopingCart = new Cart("","",1,2,3,5);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 
 
         System.out.println("************Login Shop App menu**********");
@@ -50,7 +50,7 @@ public class Main {
         System.out.println("YOU EXIT THE APP");
 
     }
-    private static void shopSystem() throws IOException {
+    private static void shopSystem() throws IOException, SQLException, ClassNotFoundException {
         long id = -1;
         User u = null;
 
@@ -85,9 +85,11 @@ public class Main {
                 System.out.println("1.INSERT PRODUCTS FOR CURRENT USER");
                 System.out.println("2.DISPLAY LIST OF PRODUCTS FOR CURRENT ID USER");
                 System.out.println("3.DELETE PRODUCTS FROM LIST");
-               System.out.println("4.Generate bill");
-
-                System.out.println("5.Exit");
+                System.out.println("4.Update cart");
+                System.out.println("5.generate bill ");
+                System.out.println("7.displayBill() ");
+                System.out.println("8.add bill to database ");
+                System.out.println("6.Exit");
                 System.out.print("Enter Your Choice : ");
                 ch = s.nextInt();
 
@@ -108,12 +110,25 @@ public class Main {
                         break;
                     case 4:
                   dbaccessCartList.updateProductFromCart(shopingCart);
+                  break;
+                    case 5:
+                        Bill.generateBill();
+                        break;
+                    case 7:
 
+                        break;
+                    case 8:
 
                         break;
 
+
+
+
+
+
+
                 }
-            } while (ch != 5);
+            } while (ch != 6);
             System.out.println("YOU EXIT THE APP");
             break;
         }
