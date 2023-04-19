@@ -18,7 +18,8 @@ public class Crud_Cart {
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cart (prodid, prodgroup, prodname, prodprice, prodquantity, iduser)  SELECT prodid,prodgroup,prodname,prodprice,prodquantity,iduser FROM products WHERE prodid = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cart (prodid, prodgroup, prodname, prodprice, prodquantity, iduser,time) " +
+                    " SELECT prodid,prodgroup,prodname,prodprice,prodquantity,iduser,time FROM products WHERE prodid = ?");
             System.out.println("Enter product id name to add :");
             preparedStatement.setInt(1, sc.nextInt());
 
@@ -48,7 +49,7 @@ public class Crud_Cart {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("enter the user id to see your product from cart:");
-           Integer str = sc.nextInt();
+              int str = sc.nextInt();
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
@@ -90,7 +91,7 @@ public class Crud_Cart {
 
         //connect to DB
         System.out.println("Enter product id to set the new quantity:  ");
-        Integer str = sc.nextInt();
+        int str = sc.nextInt();
 
         try {
             Connection connection = DBconnect.ConexiuneDB();

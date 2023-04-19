@@ -29,11 +29,11 @@ public class Main {
         System.out.println("************Login Shop App menu**********");
         int ch;
         do {
-
-            System.out.println("1.Register menu");
-            System.out.println("2.Login shop menu");
-            System.out.println("3.Exit app");
-
+            System.out.println("*****************************************************************************");
+            System.out.println("1.Register Customer menu ***********");
+            System.out.println("2.Login shop menu****************");
+            System.out.println("3.Exit app*******************");
+            System.out.println("*****************************************************************************");
             System.out.print("Enter Your Choice : ");
             ch = sc.nextInt();
 
@@ -81,14 +81,14 @@ public class Main {
 
             int ch;
             do {
-                System.out.println("0.READ AVAILABLE  PRODUCTS IN STORE  ");
-                System.out.println("1.INSERT PRODUCTS FOR CURRENT USER");
-                System.out.println("2.DISPLAY LIST OF PRODUCTS FOR CURRENT ID USER");
-                System.out.println("3.DELETE PRODUCTS FROM LIST");
-                System.out.println("4.Update cart");
-                System.out.println("5.generate bill ");
-                System.out.println("7.displayBill() ");
-                System.out.println("8.add bill to database ");
+                System.out.println("0.AVAILABLE  PRODUCTS IN STORE TO BUY ");
+                System.out.println("1.INSERT PRODUCTS IN CART");
+                System.out.println("2.DISPLAY CART LIST ");
+                System.out.println("3.DELETE PRODUCTS FROM  CART");
+                System.out.println("4.EDIT  CART");
+                System.out.println("5.GENERATE bill ");
+//                System.out.println("7.displayBill() ");
+//                System.out.println("8.add bill to database ");
                 System.out.println("6.Exit");
                 System.out.print("Enter Your Choice : ");
                 ch = s.nextInt();
@@ -120,11 +120,6 @@ public class Main {
                     case 8:
 
                         break;
-
-
-
-
-
 
 
                 }
@@ -184,7 +179,7 @@ public class Main {
                         case 9:
                             System.out.println("*********Shop register menu*************");
 
-                                break;
+                            break;
 
 
                     }

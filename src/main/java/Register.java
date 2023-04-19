@@ -25,7 +25,11 @@ public class Register {
             preparedStatement.setString(2, sc.nextLine());
 
 
-            val=preparedStatement.executeUpdate();
+            try {
+                val=preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println("User name allready exist!!!");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             String m = e.getMessage();

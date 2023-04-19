@@ -12,13 +12,13 @@ public class Cart {
 
     @Override
     public String toString() {
-        return " Shop Cart : " +
-                "Product group:'" + prodgroup + '\'' +
-                ", Product name:'" + prodname + '\'' +
-                ", Product price:" + prodprice +
-                ", Product id:" + prodid +
-                ", Product quantity:" + prodquantity +
-                ", Id User : " + iduser +'\n';
+        return " Cart items : " +
+                " group:" + prodgroup  +
+                " name:" + prodname  +
+                " price:" + prodprice +
+                " id:" + prodid +
+                " quantity:" + prodquantity +
+                " User id: " + iduser +'\n';
     }
 
     public String getProdgroup() {
