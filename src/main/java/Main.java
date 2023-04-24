@@ -114,6 +114,7 @@ public class Main {
                     case 5:
                         Bill.generateBill();
                        Crud_Payment.insertPaymentDetails();
+                       Orders_history.insertOrdersHistory();
                        ch=6;
                         break;
                     case 7:
@@ -147,7 +148,7 @@ public class Main {
                     System.out.println("6.READ ALL PRODUCTS FROM STORE LIST");
                     System.out.println("7.UPDATE PRODUCT FROM STORE LIST");
                     System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
-                    System.out.println("9.REGISTER MENU");
+                    System.out.println("9.FIND ORDER HISTORY BY USER NAME");
                     System.out.println("10.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
@@ -180,7 +181,7 @@ public class Main {
                             dbaccessprod.deleteProductsByAdmin();
                             break;
                         case 9:
-
+                            Orders_history.readAllOrdersHistorybyUserName();
                             break;
 
 
