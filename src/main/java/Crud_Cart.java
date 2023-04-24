@@ -18,10 +18,11 @@ public class Crud_Cart {
             Connection connection = DBconnect.ConexiuneDB();
 
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cart (prodid, prodgroup, prodname, prodprice, prodquantity, iduser,time) " +
-                    " SELECT prodid,prodgroup,prodname,prodprice,prodquantity,iduser,time FROM products WHERE prodid = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cart (prodid, prodgroup, prodname, prodprice, prodquantity) " +
+                    " SELECT prodid,prodgroup,prodname,prodprice,prodquantity FROM products WHERE prodid = ? ");
             System.out.println("Enter product id name to add :");
             preparedStatement.setInt(1, sc.nextInt());
+
 
 
             val = preparedStatement.executeUpdate();
@@ -48,13 +49,13 @@ public class Crud_Cart {
 
         try {
             Scanner sc = new Scanner(System.in);
-            System.out.println("enter the user id to see your product from cart:");
-              int str = sc.nextInt();
+//            System.out.println("enter the user id to see your product from cart:");
+//              int str = sc.nextInt();
             Connection connection = DBconnect.ConexiuneDB();
-
+                   //left outer join users on cart.iduser = users.id where users.id = " +str+"
             //run SQL
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from cart left outer join users on cart.iduser = users.id where users.id = " +str+"");
+            ResultSet resultSet = statement.executeQuery("select * from cart ");
 
 
             while (resultSet.next()) {
@@ -63,16 +64,16 @@ public class Crud_Cart {
                 String prodname = resultSet.getString("prodname").trim();
                 int prodprice = resultSet.getInt("prodprice");
                 int prodquantity = resultSet.getInt("prodquantity");
-                int iduser = resultSet.getInt("iduser");
 
 
-               Cart listCart = new Cart(prodid, prodgroup, prodname, prodprice, prodquantity,iduser);
+
+               Cart listCart = new Cart(prodid, prodgroup, prodname, prodprice, prodquantity);
                listCart.setProdid(prodid);
                 listCart.setProdgroup(prodgroup);
                 listCart.setProdname(prodname);
                 listCart.setProdprice(prodprice);
                 listCart.setProdquantity(prodquantity);
-                listCart.setIduser(iduser);
+
 
 
                 listOfCart.add(listCart);
@@ -96,7 +97,7 @@ public class Crud_Cart {
         try {
             Connection connection = DBconnect.ConexiuneDB();
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodquantity where iduser = "+str+"");
+            PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodquantity where prodid = "+str+"");
 
             System.out.println("Enter new quanity to be update");
             preparedStatement.setInt(2,sc.nextInt());
@@ -158,7 +159,22 @@ public class Crud_Cart {
         if(message!=null) System.out.println(message);
         return message;
     }
+    String deleteALLFromCart(){
+        String message = null;
+        int val = 0;
 
+        //connect to DB
+
+
+        try {
+            Connection connection = DBconnect.ConexiuneDB();
+            //run SQL
+            PreparedStatement preparedStatement = connection.prepareStatement("delete FROM cart ");
+            val = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+        }
+      return message ;
+    }
 
 
 }

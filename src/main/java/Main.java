@@ -24,7 +24,7 @@ public class Main {
     static Cart shopingCart = new Cart("","",1,2,3,5);
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-
+         dbaccessCartList.deleteALLFromCart();
 
         System.out.println("************Login Shop App menu**********");
         int ch;
@@ -86,7 +86,7 @@ public class Main {
                 System.out.println("2.DISPLAY CART LIST ");
                 System.out.println("3.DELETE PRODUCTS FROM  CART");
                 System.out.println("4.EDIT  CART");
-                System.out.println("5.GENERATE bill ");
+                System.out.println("5.PAYMENT MENU ");
 //                System.out.println("7.displayBill() ");
 //                System.out.println("8.add bill to database ");
                 System.out.println("6.Exit");
@@ -113,6 +113,8 @@ public class Main {
                   break;
                     case 5:
                         Bill.generateBill();
+                       Crud_Payment.insertPaymentDetails();
+                       ch=6;
                         break;
                     case 7:
 
@@ -140,11 +142,12 @@ public class Main {
                     System.out.println("2.DISPLAY LIST OF USER");//ok
                     System.out.println("3.DELETE USER");//ok
                     System.out.println("4.UPDATE USER LIST");//ok
+                    System.out.println("******* Products menu ******* ");
                     System.out.println("5.INSERT PRODUCTS TO STORE LIST");
-                    System.out.println("6.READ PRODUCTS FROM STORE LIST");
-                    System.out.println("7.UPDATE PRODUCTS FROM STORE LIST");
+                    System.out.println("6.READ ALL PRODUCTS FROM STORE LIST");
+                    System.out.println("7.UPDATE PRODUCT FROM STORE LIST");
                     System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
-                    System.out.println("9.Register  menu");
+                    System.out.println("9.REGISTER MENU");
                     System.out.println("10.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
@@ -177,7 +180,6 @@ public class Main {
                             dbaccessprod.deleteProductsByAdmin();
                             break;
                         case 9:
-                            System.out.println("*********Shop register menu*************");
 
                             break;
 

@@ -3,7 +3,7 @@ public class Cart {
     private int prodprice,prodid;
     private int prodquantity,iduser;
 
-    public Cart(int prodid, String prodgroup, String prodname, int prodprice, int prodquantity, int iduser) {
+    public Cart(int prodid, String prodgroup, String prodname, int prodprice, int prodquantity) {
     }
 
     public Cart() {
@@ -17,8 +17,7 @@ public class Cart {
                 " name:" + prodname  +
                 " price:" + prodprice +
                 " id:" + prodid +
-                " quantity:" + prodquantity +
-                " User id: " + iduser +'\n';
+                " quantity:" + prodquantity + '\n';
     }
 
     public String getProdgroup() {
