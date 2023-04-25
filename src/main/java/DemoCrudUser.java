@@ -13,15 +13,15 @@ Scanner sc =new Scanner(System.in);
 
         try {
             Connection connection = DBconnect.ConexiuneDB();
-
+            Scanner sc2 = new Scanner(System.in);
             //run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users (username, password, isadmin) VALUES (?,?,?)");
             System.out.println("Enter user name :");
-            preparedStatement.setString(1,sc.nextLine());
+            preparedStatement.setString(1,sc2.nextLine());
             System.out.println("Enter user password :");
-            preparedStatement.setString(2, sc.nextLine());
-            System.out.println("Enter true  if user is admin or false if no :");
-            preparedStatement.setBoolean(3,sc.nextBoolean());
+            preparedStatement.setString(2, sc2.nextLine());
+            System.out.println("Enter true  if user is admin or false if not :");
+            preparedStatement.setBoolean(3,sc2.nextBoolean());
 
             val=preparedStatement.executeUpdate();
         } catch (SQLException e) {

@@ -91,15 +91,17 @@ public class Crud_Cart {
         int val=0;
 
         //connect to DB
-        System.out.println("Enter product id to set the new quantity:  ");
-        int str = sc.nextInt();
+
 
         try {
             Connection connection = DBconnect.ConexiuneDB();
             //run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodquantity where prodid = "+str+"");
 
-            System.out.println("Enter new quanity to be update");
+            PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodquantity = ?  where prodid = ?");
+
+            System.out.println("Enter the  new quanity to be update");
+            preparedStatement.setInt(1,sc.nextInt());
+            System.out.println("Enter product id to be update");
             preparedStatement.setInt(2,sc.nextInt());
 
             val = preparedStatement.executeUpdate();
@@ -117,8 +119,8 @@ public class Crud_Cart {
 
         }
 
-        System.out.println(message);
-        System.out.println(val + "Product /s successfully updated ");
+
+        System.out.println( val + " Product/s successfully updated ");
         return message;
     }
 

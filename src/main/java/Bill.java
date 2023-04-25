@@ -15,7 +15,7 @@ public class Bill {
 
             Main.dbaccessCartList.readCartListOfAnUser();
             Statement st = connection.createStatement();
-            ResultSet res = st.executeQuery("SELECT SUM(prodprice)    FROM cart  ");
+            ResultSet res = st.executeQuery("SELECT SUM(prodprice * cart.prodquantity )    FROM cart  ");
             while (res.next()) {
                 int c = res.getInt(1);
                 sum = sum + c;

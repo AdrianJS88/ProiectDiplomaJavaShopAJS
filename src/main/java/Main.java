@@ -24,7 +24,7 @@ public class Main {
     static Cart shopingCart = new Cart("","",1,2,3,5);
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-         dbaccessCartList.deleteALLFromCart();
+
 
         System.out.println("************Login Shop App menu**********");
         int ch;
@@ -42,6 +42,7 @@ public class Main {
                     Register.customerRegister();
                     break;
                 case 2:
+                    dbaccessCartList.deleteALLFromCart();
                     shopSystem();
                     break;
 
