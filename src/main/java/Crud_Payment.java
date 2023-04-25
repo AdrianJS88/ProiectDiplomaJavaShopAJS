@@ -17,7 +17,7 @@ public class Crud_Payment {
             //run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO payments ( deliveraddress, f_name, l_name, id_card, exp_card_date, card_cvv) " +
                     " SELECT ?,?,?,?,?,? ");
-            System.out.println("Enter delivary address:");
+            System.out.println("Enter your delivery address:");
             preparedStatement.setString(1, sc.nextLine());
             System.out.println("Enter first name:");
             preparedStatement.setString(2, sc.nextLine());

@@ -124,7 +124,7 @@ public class Crud_Products {
         }
 
 
-        System.out.println(val + " user/s successfully updated");
+        System.out.println(val + " Product/s successfully updated");
         return message;
 
     }
@@ -158,7 +158,7 @@ public class Crud_Products {
         }
 
         System.out.println(message);
-        System.out.println(val + " user/sdeleted ");
+        System.out.println(val + " Product/s deleted ");
         return message;
     }
 

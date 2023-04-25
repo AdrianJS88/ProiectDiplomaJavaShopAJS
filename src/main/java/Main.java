@@ -1,7 +1,5 @@
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -9,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
-    static DemoCrudUser dbaccess = new DemoCrudUser();
+    static Crud_User dbaccess = new Crud_User();
 
     static float total = 0;
 
@@ -99,7 +97,7 @@ public class Main {
                         dbaccessprod.readProdByAdmin();
                         break;
                     case 1:
-                        dbaccessCartList.insertProdInCartForUserID();
+                        dbaccessCartList.insertProdInCartForUser();
                         break;
                     case 2:
 

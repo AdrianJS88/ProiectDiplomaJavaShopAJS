@@ -52,7 +52,7 @@ public class User {
             return  "User name : " + username + "," + " " +
                     "Password : " + password + "," + " " +
                     "Id : " + id + "," + " " +
-                    "is admin : " + isadmin + ";" + '\n';
+                    " Admin : " + isadmin + ";" + '\n';
         }
     }
 

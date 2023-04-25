@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DemoCrudUser {
+public class Crud_User {
 Scanner sc =new Scanner(System.in);
     String createUser(User user, boolean isadmin){
         String message=null;
@@ -35,7 +35,7 @@ Scanner sc =new Scanner(System.in);
         }
 
 
-        System.out.println(val + " user successfully created ");
+        System.out.println(val + " User successfully created ");
         return message;
     }
 
@@ -135,7 +135,7 @@ Scanner sc =new Scanner(System.in);
         }
 
         System.out.println(message);
-        System.out.println(val + " user/sdeleted ");
+        System.out.println(val + " user/s deleted ");
         return message;
     }
 
@@ -175,7 +175,7 @@ Scanner sc =new Scanner(System.in);
 
     boolean isAdmin (User user)  {
 
-        // -1 daca nu exista , si id-ul usaerului daca exista
+        // -1 daca nu exista , si id-ul usarului daca exista
 
 
         boolean isAdmin=false;

@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +7,7 @@ public class Crud_Cart {
 
     static Scanner sc = new Scanner(System.in);
 
-    public String insertProdInCartForUserID() {
+    public String insertProdInCartForUser() {
         String message = null;
         int val = 0;
 
@@ -37,7 +36,7 @@ public class Crud_Cart {
         }
 
 
-        System.out.println(val + " product successfully created ");
+        System.out.println(val + " product successfully inserted  ");
         return message;
     }
 
@@ -99,10 +98,11 @@ public class Crud_Cart {
 
             PreparedStatement preparedStatement = connection.prepareStatement("update cart set prodquantity = ?  where prodid = ?");
 
-            System.out.println("Enter the  new quanity to be update");
-            preparedStatement.setInt(1,sc.nextInt());
-            System.out.println("Enter product id to be update");
+            System.out.println("Enter product id to be updated");
             preparedStatement.setInt(2,sc.nextInt());
+            System.out.println("Enter the  new quantity to be updated");
+            preparedStatement.setInt(1,sc.nextInt());
+
 
             val = preparedStatement.executeUpdate();
 
