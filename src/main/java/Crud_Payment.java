@@ -43,7 +43,9 @@ public class Crud_Payment {
 
 
         System.out.println(val + " payment  successfully completed ");
+        System.out.println("                                     ");
         System.out.println("Thanks for buying from us .");
+        System.out.println("                                     ");
         return message;
     }
 

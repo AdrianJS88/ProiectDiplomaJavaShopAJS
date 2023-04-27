@@ -36,14 +36,11 @@ public class Main {
             ch = sc.nextInt();
 
             switch (ch) {
-                case 1:
-                    Register.customerRegister();
-                    break;
-                case 2:
-                    dbaccessCartList.deleteALLFromCart();
+                case 1 -> Register.customerRegister();
+                case 2 -> {
+                    dbaccessCartList.cartUpdate();
                     shopSystem();
-                    break;
-
+                }
             }
         }while (ch != 3);
         System.out.println("YOU EXIT THE APP");
@@ -113,8 +110,7 @@ public class Main {
                     case 5:
                         Bill.generateBill();
                        Crud_Payment.insertPaymentDetails();
-                       Orders_history.insertOrdersHistory();
-                       ch=6;
+                      crud_Orders.insertOrdersHistory();
                         break;
                     case 7:
 
@@ -147,8 +143,9 @@ public class Main {
                     System.out.println("6.READ ALL PRODUCTS FROM STORE LIST");
                     System.out.println("7.UPDATE PRODUCT FROM STORE LIST");
                     System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
-                    System.out.println("9.FIND ORDER HISTORY BY USER NAME");
-                    System.out.println("10.Exit");//ok
+                    System.out.println("9.FIND ORDER HISTORY BY USER FIRTS NAME");
+                    System.out.println("10.FIND ORDER HISTORY BY USER FIRTS NAME");
+                    System.out.println("11.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
 
@@ -180,16 +177,18 @@ public class Main {
                             dbaccessprod.deleteProductsByAdmin();
                             break;
                         case 9:
-                        //    Orders_history.readAllOrdersHistory();
+                           crud_Orders.readOrdersByAdmin() ;
                             break;
-
+                        case 10:
+                            crud_Orders.updateOrders() ;
+                            break;
 
                     }
 
 
                 }
 
-                while (ch2 != 10);
+                while (ch2 != 11);
                 System.out.println("YOU EXIT THE APP");
                 break;
             }

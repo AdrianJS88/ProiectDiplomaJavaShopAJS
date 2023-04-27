@@ -161,7 +161,7 @@ public class Crud_Cart {
         if(message!=null) System.out.println(message);
         return message;
     }
-    String deleteALLFromCart(){
+    String cartUpdate(){
         String message = null;
         int val = 0;
 
