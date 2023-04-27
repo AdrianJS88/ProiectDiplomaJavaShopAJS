@@ -138,13 +138,14 @@ public class Main {
                     System.out.println("2.DISPLAY LIST OF USER");//ok
                     System.out.println("3.DELETE USER");//ok
                     System.out.println("4.UPDATE USER LIST");//ok
+                    System.out.println("**********************************");
                     System.out.println("******* Products menu ******* ");
                     System.out.println("5.INSERT PRODUCTS TO STORE LIST");
                     System.out.println("6.READ ALL PRODUCTS FROM STORE LIST");
                     System.out.println("7.UPDATE PRODUCT FROM STORE LIST");
                     System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
                     System.out.println("9.FIND ORDER HISTORY BY USER FIRTS NAME");
-                    System.out.println("10.FIND ORDER HISTORY BY USER FIRTS NAME");
+                    System.out.println("10.UPDATE ORDERS HISTORY ");
                     System.out.println("11.Exit");//ok
                     System.out.print("Enter Your Choice : ");
                     ch2 = s.nextInt();
