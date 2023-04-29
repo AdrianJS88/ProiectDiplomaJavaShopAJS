@@ -9,7 +9,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     static Crud_User dbaccess = new Crud_User();
 
-    static float total = 0;
+    
 
     static Crud_Products dbaccessprod = new Crud_Products();
 
