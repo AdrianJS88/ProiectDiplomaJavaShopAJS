@@ -16,19 +16,18 @@ public class Orders_history {
     public String toString() {
         return "Orders history : " +
                 " Product id : " + prodid +
-                " order id : " + orderid +
-                " product price :" + prodprice +
-                " product quantity :" + prodquantity +
-                " billid : " + billid +
-                " id_card :" + id_card +
-                " exp_card_date : " + exp_card_date +
-                " card_cvv : " + card_cvv +
-                " prodgroup : " + prodgroup + '\'' +
-                " prodname : " + prodname + '\'' +
-                " deliveraddress : " + deliveraddress + '\'' +
-                " f_name : " + f_name + '\'' +
-                " l_name : " + l_name + '\'' + "\n" +
-                '}';
+                " Order id : " + orderid +
+                " Product price :" + prodprice +
+                " Product quantity :" + prodquantity +
+                " Bill id : " + billid +
+                " Id_card :" + id_card +
+                " Exp_card_date : " + exp_card_date +
+                " Card_cvv : " + card_cvv +
+                " Product group : " + prodgroup  +
+                " Product name : " + prodname +
+                " Deliver address : " + deliveraddress  +
+                " First name : " + f_name  +
+                " Last name : " + l_name + "\n";
     }
 
     private int prodid,orderid, prodprice,prodquantity, billid,id_card,exp_card_date,card_cvv;

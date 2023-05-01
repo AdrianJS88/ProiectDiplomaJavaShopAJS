@@ -36,15 +36,13 @@ public class Crud_Payment {
             String m = e.getMessage();
             if (m.contains("authentication failed for"))
                 message = "connection problem";
-            else if (m.contains("ERROR: value too long"))
-                message = " username or password too long";
             else message = "error";
         }
 
 
         System.out.println(val + " payment  successfully completed ");
         System.out.println("                                     ");
-        System.out.println("Thanks for buying from us .");
+        System.out.println("Thanks for buying!!!.");
         System.out.println("                                     ");
         return message;
     }

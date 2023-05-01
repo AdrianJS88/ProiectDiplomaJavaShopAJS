@@ -113,7 +113,7 @@ public class Crud_Cart {
             else if(m.contains("ERROR: value too long for type character"))
                 message="  Product name  too long";
             else if(m.contains(" not exist"))
-                message=" cannot update product  does not exist. ";
+                message=" Cannot update product  does not exist. ";
             else message=" error";
 
         }

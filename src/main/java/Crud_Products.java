@@ -34,8 +34,8 @@ public class Crud_Products {
             String m = e.getMessage();
             if(m.contains("authentication failed for"))
                 message="connection problem";
-            else if(m.contains("ERROR: value too long"))
-                message=" username or password too long";
+            else if(m.contains("ERROR: value too long"));
+
             else message="error";
         }
 
@@ -118,8 +118,7 @@ public class Crud_Products {
             String m = e.getMessage();
             if(m.contains("authentication failed "))
                 message=" connection problem!";
-            else if(m.contains("ERROR: value too long "))
-                message="username or password too long! ";
+            else if(m.contains("ERROR: value too long "));
             else message="error ";
         }
 

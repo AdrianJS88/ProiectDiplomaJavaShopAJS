@@ -10,14 +10,13 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment{" +
-                "deliverAddress='" + deliverAddress + '\'' +
-                ", fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
-                ", idCard=" + idCard +
-                ", dateOfExpCard=" + dateOfExpCard +
-                ", cardCvv=" + cardCvv +
-                '}';
+        return " Payment details :" +
+                " Deliver Address :" + deliverAddress +
+                " Frist name: " + fName  +
+                " Last name:" + lName +
+                " Card id :" + idCard +
+                " Date Of Exp Card:" + dateOfExpCard +
+                " Card Cvv=" + cardCvv ;
     }
 
     public Payment(String deliverAddress, String fName, String lName, int idCard, int dateOfExpCard, int cardCvv) {

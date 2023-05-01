@@ -42,8 +42,7 @@ public class Crud_Orders {
 
         try {
             Connection connection = DBconnect.ConexiuneDB();
-            System.out.println("Enter the name to search:");
-            String sc = new Scanner(System.in).nextLine();
+
             //run SQL
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT\n" +
@@ -103,15 +102,20 @@ public class Crud_Orders {
             Connection connection = DBconnect.ConexiuneDB();
 
             // run SQL
-            PreparedStatement preparedStatement = connection.prepareStatement("update orders_history set f_name = ? ,l_name = ? ,prodquantity = ? where prodid = ?");
-            System.out.println("new pass");
-            preparedStatement.setString(1, sc.next());
-            System.out.println("new username");
-            preparedStatement.setString(2, sc.next());
-            System.out.println("new prodquantity ");
-            preparedStatement.setInt(3, Integer.parseInt(sc.next()));
-            System.out.println("old prodid");
+            PreparedStatement preparedStatement = connection.prepareStatement("update orders_history set deliveraddress = ? ,  f_name = ? ,l_name = ? ,prodquantity = ? where orderid = ?");
+            System.out.println("Enter new address :");
+            preparedStatement.setString(1, sc.nextLine());
+            System.out.println("Enter new first name:");
+            preparedStatement.setString(2, sc.nextLine());
+            System.out.println("Enter new last name:");
+            preparedStatement.setString(3, sc.nextLine());
+            System.out.println("Enter new product quantity: ");
             preparedStatement.setInt(4, Integer.parseInt(sc.next()));
+            System.out.println("Enter Old order id:");
+            preparedStatement.setInt(5, Integer.parseInt(sc.next()));
+
+
+
             val = preparedStatement.executeUpdate();
 
 
@@ -120,13 +124,12 @@ public class Crud_Orders {
             String m = e.getMessage();
             if (m.contains("authentication failed "))
                 message = " connection problem!";
-            else if (m.contains("ERROR: value too long "))
-                message = "username or password too long! ";
+
             else message = "error ";
         }
 
 
-        System.out.println(val + " user/s successfully updated");
+        System.out.println(val + " Order/s successfully updated");
         return message;
 
     }
