@@ -31,8 +31,8 @@ public class Crud_Cart {
             if (m.contains("authentication failed for"))
                 message = "connection problem";
             else if (m.contains("ERROR: value too long"))
-                message = " username or password too long";
-            else message = "error";
+                message = " Product name too long";
+            else message = "Error";
         }
 
 
@@ -48,10 +48,9 @@ public class Crud_Cart {
 
         try {
             Scanner sc = new Scanner(System.in);
-//            System.out.println("enter the user id to see your product from cart:");
-//              int str = sc.nextInt();
+
             Connection connection = DBconnect.ConexiuneDB();
-                   //left outer join users on cart.iduser = users.id where users.id = " +str+"
+
             //run SQL
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from cart ");
@@ -152,12 +151,12 @@ public class Crud_Cart {
             String m = e.getMessage();
             if(m.contains(" authentication failed "))
                 message= " connection problem ";
-            else if(m.contains("violates foreign key constraint"))
-                message= "cannot delete  product exist product registered for it";
+            else if(m.contains("Violates foreign key constraint"))
+                message= "Cannot delete the product !";
             else  message=" error";
         }
 
-        if(val<=0) System.out.println("The product  does not exist ");
+        if(val<=0) System.out.println("The product does not exist ");
         if(message!=null) System.out.println(message);
         return message;
     }

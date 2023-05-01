@@ -14,19 +14,19 @@ public class Crud_Products {
 
         try {
             Connection connection = DBconnect.ConexiuneDB();
-
+            Scanner sc2 =new Scanner(System.in);
             //run SQL
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO products (prodid, prodgroup, prodname, prodprice, prodquantity) VALUES (?,?,?,?,?)");
             System.out.println("Enter product id name :");
-            preparedStatement.setInt(1, sc.nextInt());
+            preparedStatement.setInt(1, Integer.parseInt(sc2.next()));
             System.out.println("Enter product group :");
-            preparedStatement.setString(2, sc.next());
+            preparedStatement.setString(2, sc2.next());
             System.out.println("Enter product name :");
-            preparedStatement.setString(3, sc.next());
+            preparedStatement.setString(3, sc2.next());
             System.out.println("Enter product price :");
-            preparedStatement.setInt(4,sc.nextInt());
+            preparedStatement.setInt(4, Integer.parseInt(sc2.next()));
             System.out.println("Enter product quantity :");
-            preparedStatement.setInt(5, sc.nextInt());
+            preparedStatement.setInt(5, Integer.parseInt(sc2.next()));
 
             val=preparedStatement.executeUpdate();
         } catch (SQLException e) {

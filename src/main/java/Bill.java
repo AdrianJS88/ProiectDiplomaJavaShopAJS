@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Bill {
 
     public static String generateBill() {
-        Scanner sc = new Scanner(System.in);
+
         int sum = 0;
         String message = null;
         int val = 0;
