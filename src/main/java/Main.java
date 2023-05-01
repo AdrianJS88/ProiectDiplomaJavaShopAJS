@@ -53,9 +53,9 @@ public class Main {
             System.out.println("LOGIN SHOP MENU!!!!!!!");
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
-            String username = sc.nextLine();
+            String username = sc.nextLine().toUpperCase();
             System.out.println("Enter password:");
-            String pwd = sc.nextLine();
+            String pwd = sc.nextLine().toUpperCase();
             u = new User(username, pwd);
             id = dbaccess.login(u);
             u.setId(id);
@@ -76,6 +76,7 @@ public class Main {
 
             int ch;
             do {
+                System.out.println("*********************** CUSTOMER MENU **************************");
                 System.out.println("0.AVAILABLE  PRODUCTS IN STORE TO BUY ");
                 System.out.println("1.INSERT PRODUCTS IN CART");
                 System.out.println("2.DISPLAY CART LIST ");
@@ -84,6 +85,7 @@ public class Main {
                 System.out.println("5.PAYMENT MENU ");
                 System.out.println("6.RETURN TO MAIN MENU");
                 System.out.print("Enter Your Choice : ");
+                System.out.println("*****************************************************************************");
                 ch = s.nextInt();
 
                 switch (ch) {
@@ -139,6 +141,7 @@ public class Main {
                     System.out.println("10.UPDATE ORDER HISTORY ");
                     System.out.println("11.DELETE ALL ORDERS HISTORY ");
                     System.out.println("12.RETURN TO MAIN MENU");//ok
+                    System.out.println("*************************************");
                     System.out.print("Enter Your Choice : ");
                     ch = s.nextInt();
 
