@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class crud_Orders {
+public class Crud_Orders {
     static Scanner sc = new Scanner(System.in);
 
     public static String insertOrdersHistory() {
@@ -131,40 +131,32 @@ public class crud_Orders {
 
     }
 
-//    String deleteUser(User u){
-//        String message = null;
-//        int val = 0;
-//
-//        //connect to DB
-//
-//        try {
-//            Connection connection = DBconnect.ConexiuneDB();
-//
-//            //run SQL
-//            PreparedStatement preparedStatement = connection.prepareStatement("delete from users where id = ?");
-//            System.out.println("Enter id number to delete :");
-//            preparedStatement.setInt(1, sc.nextInt());
-//
-//            val = preparedStatement.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            String m = e.getMessage();
-//            if(m.contains(" authentication failed for"))
-//                message= " connection problem ";
-//            else if(m.contains("violates foreign key constraint"))
-//                message= " cannot delete  user  food registered for him";
-//            else if(m.contains("is not present"))
-//                message=" user  does not exist!";
-//            else message= " error";
-//        }
-//
-//        System.out.println(message);
-//        System.out.println(val + " user/s deleted ");
-//        return message;
-//    }
-//
-//
+    static String deleteOrders(){
+        String message = null;
+        int val = 0;
+
+        //connect to DB
+
+        try {
+            Connection connection = DBconnect.ConexiuneDB();
+
+            //run SQL
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from orders_history");
+
+            val = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+
+        }
+
+
+        System.out.println(val + " Order/s deleted ");
+        return message;
+    }
+
+
 
 
 

@@ -8,8 +8,15 @@ import java.util.Scanner;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     static Crud_User dbaccess = new Crud_User();
+
+
+
     static Crud_Products dbaccessprod = new Crud_Products();
+
     static Crud_Cart dbaccessCartList = new Crud_Cart();
+
+
+
     static User user1 = new User("adi","1");
 
     static Cart shopingCart = new Cart("","",1,2,3,5);
@@ -30,16 +37,15 @@ public class Main {
 
             switch (ch) {
                 case 1 -> Register.customerRegister();
-                case 2 -> {
-                    dbaccessCartList.cartUpdate();
-                    shopSystem();
+                case 2 -> {dbaccessCartList.cartUpdate();
+                           shopSystem();
                 }
             }
-        }while (ch != 3);
+        } while (ch != 3);
         System.out.println("YOU EXIT THE APP");
 
     }
-    private static void shopSystem() {
+    private static void shopSystem() throws IOException, SQLException, ClassNotFoundException {
         long id = -1;
         User u = null;
 
@@ -47,9 +53,9 @@ public class Main {
             System.out.println("LOGIN SHOP MENU!!!!!!!");
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
-            String username = sc.nextLine().toUpperCase();
+            String username = sc.nextLine();
             System.out.println("Enter password:");
-            String pwd = sc.nextLine().toUpperCase();
+            String pwd = sc.nextLine();
             u = new User(username, pwd);
             id = dbaccess.login(u);
             u.setId(id);
@@ -70,17 +76,14 @@ public class Main {
 
             int ch;
             do {
-                System.out.println("*************CUSTOMER MENU*******************");
                 System.out.println("0.AVAILABLE  PRODUCTS IN STORE TO BUY ");
                 System.out.println("1.INSERT PRODUCTS IN CART");
                 System.out.println("2.DISPLAY CART LIST ");
-                System.out.println("3.DELETE PRODUCTS FROM CART");
+                System.out.println("3.DELETE PRODUCTS FROM  CART");
                 System.out.println("4.EDIT  CART");
                 System.out.println("5.PAYMENT MENU ");
-                System.out.println("6.Exit");
-                System.out.println("***********************************************");
+                System.out.println("6.RETURN TO MAIN MENU");
                 System.out.print("Enter Your Choice : ");
-
                 ch = s.nextInt();
 
                 switch (ch) {
@@ -91,20 +94,22 @@ public class Main {
                         dbaccessCartList.insertProdInCartForUser();
                         break;
                     case 2:
-
                         dbaccessCartList.readCartListOfAnUser();
-
                         break;
                     case 3:
                         dbaccessCartList.deleteProductFromCart();
                         break;
                     case 4:
                   dbaccessCartList.updateProductFromCart(shopingCart);
-                  break;
+                            break;
                     case 5:
                         Bill.generateBill();
                        Crud_Payment.insertPaymentDetails();
-                      crud_Orders.insertOrdersHistory();
+                      Crud_Orders.insertOrdersHistory();
+                         break;
+                    case 7:
+
+                        break;
 
                 }
             } while (ch != 6);
@@ -116,8 +121,8 @@ public class Main {
                 //admin user menu.
 
                 Scanner s = new Scanner(System.in);
-                Scanner s1 = new Scanner(System.in);
-                int ch2;
+
+                int ch;
                 do {
                     System.out.println("******* Admin menu ******* ");
                     System.out.println("1.INSERT  USER OR ADMIN");//ok
@@ -125,21 +130,19 @@ public class Main {
                     System.out.println("3.DELETE USER");//ok
                     System.out.println("4.UPDATE USER LIST");//ok
                     System.out.println("**********************************");
-                    System.out.println("                                  ");
                     System.out.println("******* Products menu ******* ");
                     System.out.println("5.INSERT PRODUCTS TO STORE LIST");
                     System.out.println("6.READ ALL PRODUCTS FROM STORE LIST");
                     System.out.println("7.UPDATE PRODUCT FROM STORE LIST");
                     System.out.println("8.DELETE  PRODUCTS FROM STORE LIST");
-                    System.out.println("9.FIND ORDER HISTORY BY USER FIRTS NAME");
-                    System.out.println("10.UPDATE ORDERS HISTORY ");
-                    System.out.println("11.Exit");//ok
-                    System.out.println("**********************************");
+                    System.out.println("9.SEE ALL ORDERS HISTORY ");
+                    System.out.println("10.UPDATE ORDER HISTORY ");
+                    System.out.println("11.DELETE ALL ORDERS HISTORY ");
+                    System.out.println("12.RETURN TO MAIN MENU");//ok
                     System.out.print("Enter Your Choice : ");
+                    ch = s.nextInt();
 
-                    ch2 = s.nextInt();
-
-                    switch (ch2) {
+                    switch (ch) {
                         case 1:
                             dbaccess.createUser(user1, false);//ok
 
@@ -167,19 +170,20 @@ public class Main {
                             dbaccessprod.deleteProductsByAdmin();
                             break;
                         case 9:
-                           crud_Orders.readOrdersByAdmin() ;
+                           Crud_Orders.readOrdersByAdmin() ;
                             break;
                         case 10:
-                            crud_Orders.updateOrders() ;
+                            Crud_Orders.updateOrders() ;
                             break;
-
+                        case 11:
+                            Crud_Orders.deleteOrders();
+                            break;
                     }
 
 
                 }
 
-                while (ch2 != 11);
-                System.out.println("YOU EXIT THE APP");
+                while (ch != 12);
                 break;
             }
             break;
