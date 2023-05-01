@@ -8,15 +8,8 @@ import java.util.Scanner;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     static Crud_User dbaccess = new Crud_User();
-
-    
-
     static Crud_Products dbaccessprod = new Crud_Products();
-
     static Crud_Cart dbaccessCartList = new Crud_Cart();
-
-
-
     static User user1 = new User("adi","1");
 
     static Cart shopingCart = new Cart("","",1,2,3,5);
@@ -46,7 +39,7 @@ public class Main {
         System.out.println("YOU EXIT THE APP");
 
     }
-    private static void shopSystem() throws IOException, SQLException, ClassNotFoundException {
+    private static void shopSystem() {
         long id = -1;
         User u = null;
 
@@ -54,9 +47,9 @@ public class Main {
             System.out.println("LOGIN SHOP MENU!!!!!!!");
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
-            String username = sc.nextLine();
+            String username = sc.nextLine().toUpperCase();
             System.out.println("Enter password:");
-            String pwd = sc.nextLine();
+            String pwd = sc.nextLine().toUpperCase();
             u = new User(username, pwd);
             id = dbaccess.login(u);
             u.setId(id);
@@ -77,16 +70,17 @@ public class Main {
 
             int ch;
             do {
+                System.out.println("*************CUSTOMER MENU*******************");
                 System.out.println("0.AVAILABLE  PRODUCTS IN STORE TO BUY ");
                 System.out.println("1.INSERT PRODUCTS IN CART");
                 System.out.println("2.DISPLAY CART LIST ");
-                System.out.println("3.DELETE PRODUCTS FROM  CART");
+                System.out.println("3.DELETE PRODUCTS FROM CART");
                 System.out.println("4.EDIT  CART");
                 System.out.println("5.PAYMENT MENU ");
-//                System.out.println("7.displayBill() ");
-//                System.out.println("8.add bill to database ");
                 System.out.println("6.Exit");
+                System.out.println("***********************************************");
                 System.out.print("Enter Your Choice : ");
+
                 ch = s.nextInt();
 
                 switch (ch) {
@@ -111,14 +105,6 @@ public class Main {
                         Bill.generateBill();
                        Crud_Payment.insertPaymentDetails();
                       crud_Orders.insertOrdersHistory();
-                        break;
-                    case 7:
-
-                        break;
-                    case 8:
-
-                        break;
-
 
                 }
             } while (ch != 6);
@@ -139,6 +125,7 @@ public class Main {
                     System.out.println("3.DELETE USER");//ok
                     System.out.println("4.UPDATE USER LIST");//ok
                     System.out.println("**********************************");
+                    System.out.println("                                  ");
                     System.out.println("******* Products menu ******* ");
                     System.out.println("5.INSERT PRODUCTS TO STORE LIST");
                     System.out.println("6.READ ALL PRODUCTS FROM STORE LIST");
@@ -147,7 +134,9 @@ public class Main {
                     System.out.println("9.FIND ORDER HISTORY BY USER FIRTS NAME");
                     System.out.println("10.UPDATE ORDERS HISTORY ");
                     System.out.println("11.Exit");//ok
+                    System.out.println("**********************************");
                     System.out.print("Enter Your Choice : ");
+
                     ch2 = s.nextInt();
 
                     switch (ch2) {
