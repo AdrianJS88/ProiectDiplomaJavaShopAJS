@@ -77,11 +77,6 @@ public class Cart {
         this.iduser = iduser;
     }
 
-    public void removeFromCart(int rem) {
-    }
-
-    public void addToCart(int pId, String pName, String pType, int qPur, float pPrice) {
-    }
-    //cart version 2
+   
 
 }
