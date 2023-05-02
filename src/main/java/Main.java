@@ -53,9 +53,9 @@ public class Main {
             System.out.println("LOGIN SHOP MENU!!!!!!!");
             System.out.println("Enter username:");
             Scanner sc = new Scanner(System.in);
-            String username = sc.nextLine().toUpperCase();
+            String username = sc.nextLine();
             System.out.println("Enter password:");
-            String pwd = sc.nextLine().toUpperCase();
+            String pwd = sc.nextLine());
             u = new User(username, pwd);
             id = dbaccess.login(u);
             u.setId(id);
